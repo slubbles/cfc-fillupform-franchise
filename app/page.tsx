@@ -217,7 +217,7 @@ export default function FranchiseForm() {
             {/* Messenger Account */}
             <div>
               <label htmlFor="messengerAccount" className="block text-lg font-semibold text-gray-800 mb-2">
-                Facebook Messenger Account <span className="text-gray-400 text-base font-normal">(Optional)</span>
+                Facebook Messenger Account Name <span className="text-gray-400 text-base font-normal">(Optional)</span>
               </label>
               <input
                 type="text"
@@ -226,7 +226,7 @@ export default function FranchiseForm() {
                 value={formData.messengerAccount}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border-3 border-gray-300 rounded-xl focus:border-cfc-red focus:ring-2 focus:ring-cfc-red outline-none transition text-lg text-gray-900"
-                placeholder="facebook.com/yourprofile or m.me/yourprofile"
+                placeholder="e.g., Juan Dela Cruz or @juandelacruz"
               />
             </div>
 

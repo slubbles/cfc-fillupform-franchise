@@ -11,12 +11,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Calamias Fried Chicken - Franchise Inquiry",
   description: "Start your own Calamias Fried Chicken franchise. Affordable investment, proven model, no royalties!",
-  icons: [
-    {
-      rel: 'icon',
-      url: '/image.png',
-    },
-  ],
+  icons: {
+    icon: [
+      { url: '/image.png', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
