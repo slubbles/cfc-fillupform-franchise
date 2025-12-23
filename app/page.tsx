@@ -36,7 +36,18 @@ export default function FranchiseForm() {
     const mobileLink = 'https://m.me/100817225723018';
     const desktopLink = 'https://www.facebook.com/messages/t/100817225723018';
     
-    window.location.href = isMobileDevice ? mobileLink : desktopLink;
+    if (isMobileDevice) {
+      // For mobile: Create temporary anchor to trigger deep link without navigation
+      const tempLink = document.createElement('a');
+      tempLink.href = mobileLink;
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+    } else {
+      // For desktop: Open in new window
+      window.open(desktopLink, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
