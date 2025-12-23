@@ -265,7 +265,7 @@ export default function FranchiseForm() {
               <p className="text-gray-800 mb-3 font-bold">Prefer to chat?</p>
               <a 
                 href={isMobile ? "http://m.me/100817225723018" : "https://web.facebook.com/messages/t/100817225723018"}
-                target="_blank"
+                target={isMobile ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg"
               >
