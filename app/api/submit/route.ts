@@ -6,10 +6,12 @@ const resend = new Resend('re_bTux3CH3_EfqUZW4d58QCNXepVZ4vdaAS');
 
 // Google Sheets setup
 const SHEET_ID = '1C6vIT1fwuzMz7NfXa0kac8HoU_OjQ9cfXJBpqA9gOIU';
-const credentials = require('../../../cfc-franchise-form-041b5ca90272.json');
 
 async function appendToSheet(data: any) {
   try {
+    // Get credentials from environment variable
+    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}');
+    
     const auth = new google.auth.GoogleAuth({
       credentials,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
