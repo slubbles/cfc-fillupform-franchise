@@ -27,6 +27,18 @@ export default function FranchiseForm() {
     checkMobile();
   }, []);
 
+  const handleMessengerClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Check device at click time for most reliable detection
+    const userAgent = navigator.userAgent || navigator.vendor;
+    const isMobileDevice = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    
+    const mobileLink = 'https://m.me/100817225723018';
+    const desktopLink = 'https://www.facebook.com/messages/t/100817225723018';
+    
+    window.location.href = isMobileDevice ? mobileLink : desktopLink;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -263,16 +275,15 @@ export default function FranchiseForm() {
             {/* Messenger Option */}
             <div className="bg-cfc-light-blue border-4 border-blue-500 rounded-xl p-4">
               <p className="text-gray-800 mb-3 font-bold">Prefer to chat?</p>
-              <a 
-                href="https://m.me/100817225723018"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg"
+              <button
+                onClick={handleMessengerClick}
+                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
               >
                 <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.89 1.432 5.478 3.678 7.162V22l3.378-1.854c.902.249 1.855.383 2.844.383 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.2 12.417l-2.578-2.75-5.031 2.75 5.531-5.865 2.64 2.75 4.969-2.75-5.531 5.865z"/>
                 </svg>
                 Chat on Messenger
-              </a>
+              </button>
               <p className="text-xs text-gray-600 mt-2">Instant responses during business hours</p>
             </div>
           </div>
