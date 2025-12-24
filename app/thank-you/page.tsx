@@ -1,4 +1,20 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function ThankYou() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect if user is on mobile device
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor;
+      const mobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+      setIsMobile(mobile);
+    };
+    checkMobile();
+  }, []);
+
   return (
     <main className="min-h-screen flex items-center justify-center px-4" style={{backgroundColor: '#FEEE07'}}>
       <div className="max-w-2xl w-full">
@@ -95,8 +111,8 @@ export default function ThankYou() {
               <p className="text-lg font-bold text-gray-800 mb-2">💬 Have questions?</p>
               <p className="text-gray-700 mb-4">Continue our conversation on Messenger for instant answers!</p>
               <a 
-                href="https://m.me/calamiasfriedchicken?ref=franchise_form_complete"
-                target="_blank"
+                href={isMobile ? "https://m.me/100817225723018" : "https://www.facebook.com/messages/t/100817225723018"}
+                target={isMobile ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg"
               >
